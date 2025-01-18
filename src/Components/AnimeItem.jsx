@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 const AnimeItem = () => {
     const {id} = useParams();
     
@@ -20,11 +21,19 @@ const AnimeItem = () => {
         const data = await response.json(); // Parse the JSON response
         setAnime(data.data)
     };
+
+    const getCharacters = async(anime) =>{
+        const response = await fetch(`https://api.jikan.moe/v4/anime/${anime}/characters`);
+        const data = await response.json(); // Parse the JSON response
+        setCharacters(data.data)
+    }
+
     const displayMoreDetails = () => {
         setShowMoreDetails(!showMoreDetails)
     }
     useEffect(()=>{
         getAnime(id)
+        getCharacters(id)
     },[])
     
   return (
@@ -69,6 +78,20 @@ const AnimeItem = () => {
                 <h3>Trailer not available</h3>
             }
         </div>
+        <h3 className="title">Characters</h3>
+        <div className="characters">
+                {characters?.map((character, index) => {
+                    const {role} = character
+                    const {images, name, mal_id} = character.character
+                    return <Link to={`/character/${mal_id}`} key={index}>
+                        <div className="character">
+                            <img src={images?.jpg.image_url} alt="" />
+                            <h4>{name}</h4>
+                            <p>{role}</p>
+                        </div>
+                    </Link>
+                })}
+            </div>
     </AnimeItemStyled>
   )
 }
