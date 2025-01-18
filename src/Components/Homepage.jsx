@@ -5,7 +5,7 @@ import { useGlobalContext } from '../context/global'
 
 const Homepage = () => {
 
-    const {handleSubmit, search, searchAnime, handleChange, getUpcomingAnime, getAiringAnime, getPopularAnime} = useGlobalContext()
+    const {handleSubmit, search,handleChange, getUpcomingAnime, getAiringAnime, getPopularAnime} = useGlobalContext()
 
     const [rendered, setRendered] = useState('popular')
 
@@ -37,7 +37,6 @@ const Homepage = () => {
         getUpcomingAnime()
     }
 
-
 return (
     <HomepageStyled>
             <header>
@@ -51,10 +50,10 @@ return (
                             <div className="filter-btn popular-filter">
                                     <button onClick={fetchPopularAnime}>Popular</button>
                             </div>
-                            <form action="" className='search-form'>
+                            <form action="" className='search-form' onClick={handleSubmit}>
                                     <div className="input-control">
                                             <input type="text" name="Search Anime" value={search} onChange={handleChange}/>
-                                            <button type="submit" onClick={handleSubmit}>Search</button>
+                                            <button type="submit">Search</button>
                                     </div>
                             </form>
                             <div className="filter-btn airing-filter">
