@@ -1,6 +1,7 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Popular from './Components/Popular';
+import AnimeItem from './Components/AnimeItem';
 import { GlobalContextProvider, useGlobalContext } from './context/global';
 import GlobalStyle from './GlobalStyle';
 
@@ -11,9 +12,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="App">
-        <Popular/>
-      </div>
+      <Routes>
+        <Route path="/" element={<Popular/>}/>
+        <Route path="/anime/:id" element={<AnimeItem/>} />
+      </Routes>
     </BrowserRouter>
   );
 }
