@@ -50,17 +50,17 @@ export const GlobalContextProvider = ({children}) => {
 
 
     //handle change
-    const handleChange = (e) => {
-        setSearch(e.target.value);
-        if(e.target.value === ''){
+    const handleChange = (event) => {
+        setSearch(event.target.value);
+        if(event.target.value === ''){
             state.isSearch = false;
         }
     }
 
 
     //handle submit
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = (event) => {
+        event.preventDefault();
         if(search){
             searchAnime(search);
             state.isSearch = true;
