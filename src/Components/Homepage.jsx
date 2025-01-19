@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Popular from './Popular'
 import { useGlobalContext } from '../context/global'
+import Upcoming from './Upcoming'
+import Airing from './Airing'
 
 const Homepage = () => {
 
@@ -12,11 +14,11 @@ const Homepage = () => {
     const switchComponent = () =>{
         switch(rendered){
             case 'popular':
-                return <Popular rendered={rendered}/>
-            case 'popular': // change to airing
-                return <Popular rendered={rendered}/>
-            case 'popular': // change to upcoming
-                return <Popular rendered={rendered}/>       
+                return <Popular rendered={rendered}/>  
+            case 'airing':
+                return <Airing rendered={rendered}/>   
+            case 'upcoming':
+                return <Upcoming rendered={rendered}/>          
             default:
                 return <Popular rendered={rendered}/>       
         }

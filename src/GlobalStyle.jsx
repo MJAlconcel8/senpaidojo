@@ -13,9 +13,11 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: red;
+        background-color: white;
     }
 `;
 
 export default GlobalStyle;
+
+// left off at 1:42:00
 
