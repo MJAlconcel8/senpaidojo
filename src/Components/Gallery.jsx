@@ -11,7 +11,11 @@ const Gallery = () => {
     const [index, setIndex] = useState(1); // Initialize with 0
 
     const switchImage = (i) => {
-        setIndex(i)
+        if (i >= pictures.length - 1) {
+            setIndex(0); // Reset to the first image
+        } else {
+            setIndex(i); // Move to the next image
+        }
     };
 
 
