@@ -27,7 +27,9 @@ const Gallery = () => {
   return (
     <GalleryStyled>
         <div className="back">
-            <Link to="/">Back</Link>
+            <Link to="/">
+                <i className="fas fa-arrow-left">Back to Home</i>
+            </Link>
         </div>
         <div className="big-image">
             <img src={pictures[index]?.jpg.image_url} alt="" />
@@ -103,3 +105,5 @@ const GalleryStyled = styled.div`
 `;
 
 export default Gallery
+
+// continue at 2:15:00
